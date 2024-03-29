@@ -232,9 +232,19 @@
             int newX = _playerX + dx;
             int newY = _playerY + dy;
 
+            // Check if the new position is within the map bounds
             if (newX >= 0 && newX < _width && newY >= 0 && newY < _height)
             {
-                if (_walkableSurface.GetGroundMapCell(newY, newX) != GroundCategory.Fight)
+                if (_walkableSurface.GetGroundMapCell(newY, newX) == GroundCategory.Fight)
+                {
+                    newState?.Invoke(StateMachine.State.CHARACTER_SELECT); // Trigger character selection state
+                    return;
+                }
+                else if (_walkableSurface.GetGroundMapCell(newY, newX) == GroundCategory.Zemmour)
+                {
+                    OnZemmourCell?.Invoke();
+                }
+                else
                 {
                     // Clear player's current position
                     Console.SetCursorPosition(_mapX + _playerX, _mapY + _playerY);
@@ -247,14 +257,6 @@
                     // Render player's new position
                     Console.SetCursorPosition(_mapX + _playerX, _mapY + _playerY);
                     Console.Write("@");
-                }
-                else if (_walkableSurface.GetGroundMapCell(newY, newX) == GroundCategory.Zemmour)
-                {
-                    OnZemmourCell?.Invoke();
-                }
-                else
-                {
-                    newState?.Invoke(StateMachine.State.CHARACTER_SELECT);
                 }
             }
         }

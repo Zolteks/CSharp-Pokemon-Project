@@ -11,6 +11,9 @@ public class Program
         int size = 20;
         //Console.SetWindowSize(size*2, size);
         Console.WriteLine("Game Started");
+        Console.WriteLine("Press C to select a character");
+        Console.WriteLine("Press M to go to the map");
+        Console.WriteLine("Press ESC to quit");
 
         StateMachine stateMachine = new();
         Menu menu = new("Main Menu");
@@ -23,6 +26,7 @@ public class Program
         mainMenu.newState += newState;
         combat.newState += newState;
         characterSelection.newState += newState;
+        map.newState += newState;
 
         void newState(StateMachine.State state)
         {
