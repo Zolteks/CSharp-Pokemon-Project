@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿public class Move
+{ }
 
-public class Move { }
-enum Attacks
+internal enum Attacks
 {
-
 }
 
 namespace ConsoleApp1
@@ -16,12 +10,13 @@ namespace ConsoleApp1
     public class Fighter
     {
         // Fields
-        Stats _stats;
-        string _name;
-        int _health;
-        int _mana;
-        int _level;
-        List<Move> _knownAttacks;
+        private Stats _stats;
+
+        private string _name;
+        private int _health;
+        private int _mana;
+        private int _level;
+        private List<Move> _knownAttacks;
 
         public int Mana { get => _mana; set => _mana = value; }
         public string Name { get => _name; set => _name = value; }

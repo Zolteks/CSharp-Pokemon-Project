@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.Menu
+﻿namespace ConsoleApp1.Menu
 {
     public class Combat
     {
-        string _curMessage;
+        private string _curMessage;
 
         public Menu _fightingMenu;
-        Fighter _player;
-        Fighter _curEnemy;
-        Random _random;
+        private Fighter _player;
+        private Fighter _curEnemy;
+        private Random _random;
 
         public delegate void UpdateStateMachine(StateMachine.State state);
+
         public event UpdateStateMachine? newState;
 
-        bool _isPlayerTurn;
-        int _curTurn;
-        int _debateScore;
+        private bool _isPlayerTurn;
+        private int _curTurn;
+        private int _debateScore;
 
         public delegate void FighterResult(bool playerWon);
+
         public event FighterResult? CombatEnded;
 
         public Combat()
@@ -40,7 +36,6 @@ namespace ConsoleApp1.Menu
 
         public void SayHello()
         {
-            
         }
 
         public void Update(ConsoleKeyInfo keyInfo)
@@ -54,7 +49,6 @@ namespace ConsoleApp1.Menu
                 UpdateEnemy();
                 CheckVictory();
             }
-
         }
 
         public void Draw()
@@ -114,10 +108,12 @@ namespace ConsoleApp1.Menu
                     Console.Write("The enemy used a classic argument");
                     _debateScore -= 50;
                     break;
+
                 case 1:
                     Console.Write("The enemy made a mistake");
                     _debateScore += 20;
                     break;
+
                 case 2:
                     Console.Write("The enemy used a STRONG argument");
                     _debateScore -= 70;

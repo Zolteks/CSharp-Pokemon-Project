@@ -1,22 +1,17 @@
-﻿
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     public class Game
     {
-
-        Game()
+        private Game()
         {
-
         }
 
         public void Update()
         {
-
         }
-        
+
         public void Draw()
         {
-
         }
     }
 }

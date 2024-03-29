@@ -4,24 +4,29 @@
     {
         // Variables for the map's position and dimensions
         public readonly int _width;
+
         public readonly int _height;
 
         private readonly WalkableSurface _walkableSurface;
 
         // Variables for the player's position
         private int _mapX;
+
         private int _mapY;
 
         // Variables for the player's position on the map
         private int _playerX;
+
         private int _playerY;
 
         public Fighter _enemy;
 
         public delegate void UpdateStateMachine(StateMachine.State state);
+
         public event UpdateStateMachine? newState;
 
         public delegate void ZemmourCell();
+
         public event ZemmourCell? OnZemmourCell;
 
         // Constructor
@@ -35,7 +40,7 @@
             _enemy = new("Vladimir Putine", 10, 10);
             _width = width;
             _height = height;
-            _walkableSurface = new WalkableSurface(180);
+            _walkableSurface = new WalkableSurface(50);
         }
 
         public ref Fighter GetEnemy()
@@ -44,72 +49,66 @@
         }
 
         // Load map data from a text file
-        public void LoadMapData()
+        public void LoadMapData(string filePath)
         {
             try
             {
-                // Initialize all cells to empty
+                // Read all lines from the file
+                string[] lines = File.ReadAllLines(filePath);
+
+                // Check if the file has content
+                if (lines.Length == 0)
+                {
+                    throw new Exception("Empty file.");
+                }
+
+                // Set the dimensions of the map based on the file content
+                int m_height = lines.Length;
+                int m_width = lines[0].Length;
+
+                // Initialize all cells based on the file content
                 for (int i = 0; i < _height; i++)
                 {
                     for (int j = 0; j < _width; j++)
                     {
-                        _walkableSurface.SetGroundMapCell(i, j, GroundCategory.Grass);
-                    }
-                }
+                        // Read the character at position (j, i)
+                        char cellChar = lines[i][j];
 
-                // Create stone path
-                int stonePathWidth = 10; // Adjust as needed
-                int stonePathStartX = (_width - stonePathWidth) / 2; // Center the path
-                int stonePathEndX = stonePathStartX + stonePathWidth;
-                for (int i = 0; i < _height; i++)
-                {
-                    for (int j = stonePathStartX; j < stonePathEndX; j++)
-                    {
-                        _walkableSurface.SetGroundMapCell(i, j, GroundCategory.Stone);
-                    }
-                }
-
-                // Create grass around the stone path
-                for (int i = 1; i < _height - 1; i++)
-                {
-                    for (int j = 1; j < _width - 1; j++)
-                    {
-                        if (j < stonePathStartX || j >= stonePathEndX)
+                        // Map the character to the corresponding GroundCategory
+                        GroundCategory category;
+                        switch (cellChar)
                         {
-                            _walkableSurface.SetGroundMapCell(i, j, GroundCategory.Grass);
+                            case 'G':
+                                category = GroundCategory.Grass;
+                                break;
+
+                            case 'S':
+                                category = GroundCategory.Stone;
+                                break;
+
+                            case 'F':
+                                category = GroundCategory.Fight;
+                                break;
+
+                            case 'Z':
+                                category = GroundCategory.Zemmour;
+                                break;
+                            // Handle other characters if needed
+                            default:
+                                category = GroundCategory.Grass; // Or any default category you prefer
+                                break;
                         }
+
+                        // Set the ground category for the current cell
+                        _walkableSurface.SetGroundMapCell(i, j, category);
                     }
-                }
-
-                // Place NPCs
-
-                _walkableSurface.SetGroundMapCell(40, 40, GroundCategory.Zemmour);
-
-                // Place fight cells
-                for (int i = 0; i < 10; i++)
-                {
-                    // Randomly choose coordinates for each fight cell
-                    Random rnd = new Random();
-                    int fightCellX = rnd.Next(0, _width);
-                    int fightCellY = rnd.Next(0, _height);
-
-                    // Ensure the chosen cell is not already occupied
-                    while (_walkableSurface.GetGroundMapCell(fightCellY, fightCellX) != GroundCategory.Grass)
-                    {
-                        fightCellX = rnd.Next(0, _width);
-                        fightCellY = rnd.Next(0, _height);
-                    }
-
-                    // Place the fight cell
-                    _walkableSurface.SetGroundMapCell(fightCellY, fightCellX, GroundCategory.Fight);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error generating map: {ex.Message}");
+                Console.WriteLine($"Error loading map data: {ex.Message}");
             }
         }
-
 
         // Render the map
         public void RenderMap()
@@ -126,7 +125,7 @@
                     int consoleY = _mapY + i;
 
                     // Check if the position is within the console window
-                    if (consoleX >= 0 && consoleX < _width && consoleY >= 0 && consoleY < _height)
+                    if (consoleX >= 0 && consoleX < Console.WindowWidth && consoleY >= 0 && consoleY < Console.WindowHeight)
                     {
                         // Check the ground type at the current position
                         GroundCategory category = _walkableSurface.GetGroundMapCell(i, j);
@@ -176,16 +175,9 @@
 
                         // Render the pixel
                         Console.SetCursorPosition(consoleX, consoleY);
-                        Console.WriteLine("\u2588");
-                    }
-                    else
-                    {
-                        // If the position is outside the console window, display an exclamation mark
-                        Console.Write("!");
+                        Console.Write("\u2588");
                     }
                 }
-
-                Console.WriteLine();
             }
 
             // Reset color to default after rendering the map
@@ -262,12 +254,10 @@
                 }
                 else
                 {
-
                     newState?.Invoke(StateMachine.State.CHARACTER_SELECT);
                 }
             }
         }
-
 
         // Handle player input
         public void Update(ConsoleKeyInfo keyInfo)

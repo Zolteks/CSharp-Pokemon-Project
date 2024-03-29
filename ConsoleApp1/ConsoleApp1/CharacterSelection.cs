@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.Menu
+﻿namespace ConsoleApp1.Menu
 {
     public class CharacterSelection : Menu
     {
-        string _curMessage;
-        bool _selecting;
-        Fighter _enemy;
-        Fighter _selectedCharacter;
+        private string _curMessage;
+        private bool _selecting;
+        private Fighter _enemy;
+        private Fighter _selectedCharacter;
 
         public delegate void UpdateStateMachine(StateMachine.State state);
+
         public event UpdateStateMachine? newState;
 
         public CharacterSelection() : base("CharacterSelection")
@@ -53,7 +48,7 @@ namespace ConsoleApp1.Menu
         {
             Console.Clear();
             Draw();
-            Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine("Character Selection");
             Console.WriteLine(_curMessage);
         }
@@ -77,20 +72,20 @@ namespace ConsoleApp1.Menu
                             BackToMenu?.Invoke();
                             break;
 
-
                         case "Macron":
                             _curMessage = ("Selected Macron");
                             _selectedCharacter = new("Macron", 100, 20);
                             break;
+
                         case "LePen":
                             _curMessage = ("Selected LePen");
                             _selectedCharacter = new("LePen", 10, 70);
                             break;
+
                         case "Le Z":
                             _curMessage = ("Selected Le Z");
                             _selectedCharacter = new("Le Z", 999, 999);
                             break;
-
 
                         case "validate":
                             if (_selectedCharacter.Name == "temp")

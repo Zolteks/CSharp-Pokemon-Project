@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.Menu
+﻿namespace ConsoleApp1.Menu
 {
     public class Button
     {
-        int _x, _y, _w, _h;
+        private int _x, _y, _w, _h;
 
-        string _buttonText;
-        int _textColor;
-        int _boxColor;
-        int _selectedColor;
-        bool _isSelected;
-        bool _hasBox;
-        string _outline;
+        private string _buttonText;
+        private int _textColor;
+        private int _boxColor;
+        private int _selectedColor;
+        private bool _isSelected;
+        private bool _hasBox;
+        private string _outline;
 
-        public Button(int x = 1, int y = 1, int w = 1, int h = 1, int textColor=1, int boxColor=1, int selectedColor=1, bool isSelected = false, bool hasBox = true, string buttonText = "button")
+        public Button(int x = 1, int y = 1, int w = 1, int h = 1, int textColor = 1, int boxColor = 1, int selectedColor = 1, bool isSelected = false, bool hasBox = true, string buttonText = "button")
         {
             _x = x;
             _y = y;
@@ -46,7 +40,7 @@ namespace ConsoleApp1.Menu
 
         public void Unselect()
         {
-            _isSelected= false;
+            _isSelected = false;
         }
 
         public string GetName()
@@ -56,14 +50,14 @@ namespace ConsoleApp1.Menu
 
         public void Draw()
         {
-            if (_isSelected ) Console.ForegroundColor = ConsoleColor.Yellow;
+            if (_isSelected) Console.ForegroundColor = ConsoleColor.Yellow;
             else Console.ForegroundColor = ConsoleColor.White;
 
-            Console.SetCursorPosition( _x, _y );
+            Console.SetCursorPosition(_x, _y);
             Console.Write("|=" + _outline + "=|");
-            Console.SetCursorPosition( _x, _y+1 );
+            Console.SetCursorPosition(_x, _y + 1);
             Console.Write("| " + _buttonText + " |", Console.ForegroundColor);
-            Console.SetCursorPosition( _x, _y+2 );
+            Console.SetCursorPosition(_x, _y + 2);
             Console.Write("|=" + _outline + "=|");
 
             Console.ForegroundColor = ConsoleColor.White;

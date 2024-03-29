@@ -4,7 +4,7 @@ using ConsoleApp1.Menu;
 
 public class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Console.SetBufferSize(500, 500);
         bool gameRunning = true;
@@ -35,6 +35,7 @@ public class Program
                     break;
 
                 case StateMachine.State.MAP:
+                    map.LoadMapData("../../../map_data.txt");
                     map.RenderMap();
                     break;
 
@@ -57,7 +58,6 @@ public class Program
 
         void GoToMap(string mapName)
         {
-
         }
 
         void GoBackToMenu()
@@ -81,7 +81,7 @@ public class Program
                 case StateMachine.State.MENU:
 
                     mainMenu.Update(keyInfo);
-                    
+
                     break;
 
                 case StateMachine.State.MAP:
@@ -140,10 +140,8 @@ public class Program
     }
 }
 
-
 /*class Player
 {
-
     int _health;
 
     int Health { get => _health; set => _health = value; }
@@ -163,7 +161,6 @@ public class Program
         if (OnTakeDamage != null) OnTakeDamage.Invoke();
         OnTakeDamage?.Invoke();
     }
-
 }*/
 // properties;
 // event Action OnTakeDamage;

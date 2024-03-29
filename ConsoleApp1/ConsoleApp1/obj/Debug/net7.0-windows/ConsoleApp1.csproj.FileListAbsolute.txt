@@ -12,3 +12,17 @@ C:\Users\ameuret\Downloads\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\refi
 C:\Users\ameuret\Downloads\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.pdb
 C:\Users\ameuret\Downloads\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.genruntimeconfig.cache
 C:\Users\ameuret\Downloads\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ref\ConsoleApp1.dll
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\bin\Debug\net7.0-windows\ConsoleApp1.exe
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\bin\Debug\net7.0-windows\ConsoleApp1.deps.json
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\bin\Debug\net7.0-windows\ConsoleApp1.runtimeconfig.json
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\bin\Debug\net7.0-windows\ConsoleApp1.dll
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\bin\Debug\net7.0-windows\ConsoleApp1.pdb
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.AssemblyInfo.cs
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.dll
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\refint\ConsoleApp1.dll
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.pdb
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ConsoleApp1.genruntimeconfig.cache
+C:\Users\Utilisateur\Documents\GitHub\CSharp-Pokemon-Project\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0-windows\ref\ConsoleApp1.dll

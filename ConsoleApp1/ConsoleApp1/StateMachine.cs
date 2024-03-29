@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     public class StateMachine
     {
@@ -16,7 +10,7 @@ namespace ConsoleApp1
             CHARACTER_SELECT,
         }
 
-        State _curState;
+        private State _curState;
 
         public StateMachine()
         {
